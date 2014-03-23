@@ -1,0 +1,31 @@
+﻿@model WebApplication2.Models.Dicom
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="centerPanel">
+    <canvas id="mainCanvas" width="900" height="600"></canvas>
+    <script>
+        var canvas = document.getElementById('mainCanvas');
+        var context = canvas.getContext('2d');
+        var imageObj = new Image();
+
+        imageObj.onload = function () {
+            context.drawImage(imageObj, 69, 50);
+        };
+        imageObj.src = @Html.Raw(Json.Encode(Model.imgURL));
+    </script>
+</div>
+
+<div class="row">
+    <div class="col-md-1">
+     <p> <input type="button" name="OpenFile" id="btnOpenFile" class="btn btn-default btn-primary" value="Open file" /></p>
+</div>
+<div class="col-md-1">
+    <p> <input type="button" name="BrowseFile" id="btnBrowseFile" class="btn btn-default btn-primary" value="Browse file" /></p>
+</div>
+
+</div>
+
+
